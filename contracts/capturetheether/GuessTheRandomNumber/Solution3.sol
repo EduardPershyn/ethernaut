@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0
-//pragma solidity ^0.4.21;
 pragma solidity ^0.8.0;
 
 //PRN games can be guessed by checking and revert if not won.
@@ -11,7 +10,6 @@ interface IGuessTheRandomNumberChallenge {
 contract Solution3 {
     IGuessTheRandomNumberChallenge public victim;
 
-    //function Solution3(GuessTheRandomNumberChallenge victim_) public {
     constructor(IGuessTheRandomNumberChallenge victim_) {
         victim = victim_;
     }
