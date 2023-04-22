@@ -3,7 +3,7 @@ pragma solidity ^0.4.21;
 
 import "./GuessTheRandomNumber.sol";
 
-//PRN games can be guessed by checking and revert if not won.
+// PRN games can be guessed by duplicating prng code
 
 contract Solution3v04 {
     GuessTheRandomNumberChallenge public victim;
