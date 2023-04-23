@@ -15,7 +15,7 @@ contract Solution3 {
     }
 
     function attack() external payable {
-        for (uint8 n = 0; n <= type(uint8).max; n++) {
+        for (uint8 n = 0; n < type(uint8).max; n++) {
             try this.tryGuess{value:1 ether}(n) {
                 return;
             } catch {
