@@ -9,11 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
     "@nomicfoundation/hardhat-toolbox": "^2.0.2"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.2",
-    "openzeppelin-contracts-08": "npm:@openzeppelin/contracts@4.7.3",
-    "openzeppelin-contracts-06": "npm:@openzeppelin/contracts@3.4.1"
+    "openzeppelin-contracts-06": "npm:@openzeppelin/contracts@3.4.1",
+    "openzeppelin-contracts-08": "npm:@openzeppelin/contracts@4.7.3"
   }
 }
