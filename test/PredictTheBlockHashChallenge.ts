@@ -9,7 +9,7 @@ const { mine } = require("@nomicfoundation/hardhat-network-helpers");
 
 const NAME = "PredictTheBlockHashChallenge";
 
-describe.only(NAME, function () {
+describe(NAME, function () {
     async function setup() {
         const [owner, attackerWallet] = await ethers.getSigners();
 
