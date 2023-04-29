@@ -1,0 +1,4 @@
+testMode: assertion
+corpusDir: corpus
+testLimit: 1000000
+balanceContract: 1000000000000000000
