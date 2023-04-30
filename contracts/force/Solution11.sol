@@ -3,6 +3,9 @@ pragma solidity ^0.8.0;
 
 import "./Force.sol";
 
+//selfdestruct sends remaining contract balance to address argument.
+//Target contract balance can be unexpectedly updated with selfdestruct payable trick
+
 contract Solution11 {
     Force public victim;
 
