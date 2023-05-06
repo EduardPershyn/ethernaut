@@ -8,7 +8,7 @@ const { ethers } = require("hardhat");
 
 const NAME = "RetirementFundChallenge";
 
-describe.only(NAME, function () {
+describe(NAME, function () {
     describe("exploit", async function () {
         let victimContract;
 
