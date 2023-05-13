@@ -7,9 +7,9 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 const { mine } = require("@nomicfoundation/hardhat-network-helpers");
 
-const NAME = "King";
+const NAME = "Denial";
 
-describe(NAME, function () {
+describe.only(NAME, function () {
     async function setup() {
         const [owner, attackerWallet] = await ethers.getSigners();
 
@@ -26,20 +26,20 @@ describe(NAME, function () {
         })
 
         it("conduct your attack here", async function () {
-            // New king
-            const AttackerFactory = await ethers.getContractFactory("Solution13");
+            const AttackerFactory = await ethers.getContractFactory("Solution14");
             attackerContract = await AttackerFactory.connect(attackerWallet).deploy(victimContract.address);
-            await attackerContract.connect(attackerWallet).attack({value: ethers.utils.parseEther("2")});
+
+            //await expect(victimContract.connect(owner).withdraw()).to.be.revertedWithoutReason();
+
+            let tx = await victimContract.connect(owner).withdraw();
+            console.log(tx);
+
+            console.log("Victim contract", await victimContract.contractBalance());
+            console.log("Attacker Balance", await ethers.provider.getBalance(attackerContract.address));
         });
 
         after(async function () {
-            // Try Reclaim kingship
-            await expect(owner.sendTransaction({
-              to: victimContract.address,
-              value: ethers.utils.parseEther("0"),
-            })).to.be.revertedWithoutReason();
 
-            expect(await victimContract._king()).to.be.equal(attackerContract.address);
         });
     });
 });
