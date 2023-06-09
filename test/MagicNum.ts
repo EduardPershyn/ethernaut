@@ -12,7 +12,7 @@ import Web3 from "web3";
 
 const NAME = "MagicNum";
 
-describe.only(NAME, function () {
+describe(NAME, function () {
     async function setup() {
         const [owner, attackerWallet] = await ethers.getSigners();
 
